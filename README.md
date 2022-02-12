@@ -17,3 +17,5 @@ Manages Developer tasks and more
 - [ ] RSS Feed
 
 - [ ] Article summary
+
+- [ ] Video summary (if possible)

@@ -2,6 +2,8 @@
   "name": "devman",
 	"displayName": "Developer Manager",
 	"description": "Manages Developer tasks and more",
+	"author": "Sarvesh Kumar Dwivedi <heysarvesh@pm.me> (https://sarvesh.netlify.app)",
+	"repository":"https://github.com/sarvesh4396/devman",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.64.0"

@@ -1,9 +1,9 @@
 {
-  "name": "devman",
+	"name": "devman",
 	"displayName": "Developer Manager",
 	"description": "Manages Developer tasks and more",
 	"author": "Sarvesh Kumar Dwivedi <heysarvesh@pm.me> (https://sarvesh.netlify.app)",
-	"repository":"https://github.com/sarvesh4396/devman",
+	"repository": "https://github.com/sarvesh4396/devman",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.64.0"
@@ -12,15 +12,58 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:devman.helloWorld"
+		"onCommand:devman.seeFeed",
+		"onCommand:devman.synonym",
+		"onCommand:devman.beautify",
+		"onCommand:devman.generate_docs",
+		"onCommand:devman.algo_to_code",
+		"onCommand:devman.code_to_algo",
+		"onCommand:devman.article_summary"
 	],
-	"main": "./extension.js",
+	"main": "./src/extension.js",
 	"contributes": {
-		"commands": [{
-            "command": "devman.helloWorld",
-            "title": "Hello World"
-
-		}]
+		"commands": [
+			{
+				"command": "devman.seeFeed",
+				"category": "DevMan",
+				"title": "See Feed"
+			},
+			{
+				"command": "devman.synonym",
+				"category": "DevMan",
+				"title": "Replace by Synonym"
+			},
+			{
+				"command": "devman.antonym",
+				"category": "DevMan",
+				"title": "Replace by Antonym"
+			},
+			{
+				"command": "devman.beautify",
+				"category": "DevMan",
+				"title": "Beautify & Share "
+			},
+			{
+				"command": "devman.generate_docs",
+				"category": "DevMan",
+				"title": "Generate Docs"
+			},
+			{
+				"command": "devman.algo_to_code",
+				"category": "DevMan",
+				"title": "Generate Algorithm from Code"
+			},
+			{
+				"command": "devman.code_to_algo",
+				"category": "DevMan",
+				"title": "Generate Code from Algorithm"
+			},
+			{
+				"command": "devman.article_summary",
+				"category": "DevMan",
+				"title": "Get summary for article"
+			}
+		]
 	},
 	"scripts": {
 		"lint": "eslint .",
@@ -28,15 +71,18 @@
 		"test": "node ./test/runTest.js"
 	},
 	"devDependencies": {
-        "@types/vscode": "^1.64.0",
-        "@types/glob": "^7.2.0",
-        "@types/mocha": "^9.0.0",
-        "@types/node": "14.x",
-        "eslint": "^8.6.0",
-        "glob": "^7.2.0",
-        "mocha": "^9.1.3",
-        "typescript": "^4.5.4",
-        "@vscode/test-electron": "^2.0.3"
-    }
-
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"@types/vscode": "^1.64.0",
+		"@vscode/test-electron": "^2.0.3",
+		"eslint": "^8.6.0",
+		"glob": "^7.2.0",
+		"mocha": "^9.1.3",
+		"typescript": "^4.5.4"
+	},
+	"dependencies": {
+		"axios": "^0.26.0",
+		"fast-xml-parser": "^4.0.3"
+	}
 }

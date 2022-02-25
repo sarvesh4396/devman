@@ -1,6 +1,6 @@
 // Feed implementation
 const vscode = require("vscode");
-const { get_feed, pick_item, read_settings } = require("../utils/req");
+const { get_feed, pick_item, read_settings } = require("../utils/util");
 
 async function pick_article() {
   const feeds = read_settings().feed;

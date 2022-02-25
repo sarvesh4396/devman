@@ -1,7 +1,7 @@
 // datamuse Implementation
 const axios = require("axios").default;
 
-const { pick_item, getSelectedText, replaceText } = require("../utils/req");
+const { pick_item, getSelectedText, replaceText } = require("../utils/util");
 const { datamuse } = require("./endpoints");
 
 async function get_synonyms() {

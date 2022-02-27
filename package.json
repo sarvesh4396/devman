@@ -14,6 +14,7 @@
 	"activationEvents": [
 		"onCommand:devman.seeFeed",
 		"onCommand:devman.synonym",
+		"onCommand:devman.antonym",
 		"onCommand:devman.beautify",
 		"onCommand:devman.generate_docs",
 		"onCommand:devman.algo_to_code",
@@ -51,19 +52,56 @@
 			{
 				"command": "devman.algo_to_code",
 				"category": "DevMan",
-				"title": "Generate Algorithm from Code"
+				"title": "Generate Code from Algorithm"
 			},
 			{
 				"command": "devman.code_to_algo",
 				"category": "DevMan",
-				"title": "Generate Code from Algorithm"
+				"title": "Generate Algorithm from Code"
 			},
 			{
 				"command": "devman.article_summary",
 				"category": "DevMan",
 				"title": "Get summary for article"
 			}
-		]
+		],
+		"configuration": {
+			"properties": {
+				"devman.feed": {
+					"type": "array",
+					"default": [
+						{
+							"name": "CSS Tricks",
+							"link": "https://css-tricks.com/feed/"
+						},
+						{
+							"name": "Open-Source",
+							"link": "https://opensource.com/feed"
+						}
+					],
+					"description": "Feed URL of your favourite sites."
+				},
+				"devman.openAI.key": {
+					"type": "string",
+					"description": "Your personal OpenAI API key for authentication.",
+					"default": null
+				},
+				"devman.openAI.temperature": {
+					"type": "number",
+					"description": "Higher values means the model will take more risks. Try 0.9 for more creative applications, and 0 (argmax sampling) for ones with a well-defined answer.",
+					"default": 0.9
+				},
+				"devman.openAI.engine": {
+					"type": "string",
+					"description": "Engine ID to process requests.",
+					"default": "davinci-codex",
+					"enum": [
+						"davinci-codex",
+						"cushman-codex"
+					]
+				}
+			}
+		}
 	},
 	"scripts": {
 		"lint": "eslint .",

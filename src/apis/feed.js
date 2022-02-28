@@ -3,7 +3,8 @@ const vscode = require("vscode");
 const { get_feed, pick_item, read_settings } = require("../utils/util");
 
 async function pick_article() {
-  const feeds = read_settings().feed;
+  const feeds = read_settings().get("feed");
+  // console.log(feeds);
   const picked_feed = await pick_item(
     feeds.map((feed) => ({ label: feed.name, link: feed.link }))
   );
@@ -25,4 +26,4 @@ async function see_feeds() {
   }
 }
 
-module.exports = { see_feeds };
+module.exports = { see_feeds, pick_article };

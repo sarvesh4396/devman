@@ -9,7 +9,10 @@ const endpoints = {
     completion: `${CODEX_URL}${read_settings().openAI.engine}/completions`,
     name1: "url",
   },
-  datamuse: { synonym: "https://api.datamuse.com/words?ml=" },
+  datamuse: {
+    synonym: "https://api.datamuse.com/words?ml=",
+    antonym: "https://api.datamuse.com/words?rel_ant=",
+  },
 };
 
 module.exports = {

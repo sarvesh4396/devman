@@ -22,5 +22,22 @@ async function get_synonyms() {
     }
   }
 }
-
-module.exports = { get_synonyms };
+async function get_antonyms() {
+  const text = getSelectedText();
+  //   console.log(text);
+  if (text) {
+    const response = await axios.get(
+      `${datamuse.antonym}${text.replace(" ", "+")}`
+    );
+    const data = response.data;
+    const picked_item = await pick_item(
+      data.map((item) => ({ label: item.word }))
+    );
+    if (picked_item) {
+      //   console.log(picked_item);
+      // @ts-ignore
+      replaceText(picked_item.label);
+    }
+  }
+}
+module.exports = { get_synonyms, get_antonyms };

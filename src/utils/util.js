@@ -20,7 +20,7 @@ function getSelectedText() {
   const editor = vscode.window.activeTextEditor;
   if (editor) {
     const text = editor.document.getText(editor.selection);
-    if (text) {
+    if (text.length > 0) {
       return text;
     } else {
       vscode.window.showInformationMessage("Select some text");
@@ -52,32 +52,59 @@ async function get_feed(url) {
   });
 }
 function read_settings() {
-  return {
-    apis: {
-      symbl: {
-        api_key: "",
-      },
-      codex: {
-        api_key: "",
-      },
-    },
-    feed: [
-      {
-        name: "CSS Tricks",
-        link: "https://css-tricks.com/feed/",
-      },
-      {
-        name: "Open-Source",
-        link: "https://opensource.com/feed",
-      },
-    ],
-  };
+  return vscode.workspace.getConfiguration("devman");
+}
+function is_codex_apikey() {
+  return read_settings().openAI.key !== null;
 }
 
+function show_settings_popup(msg) {
+  vscode.window
+    .showInformationMessage(msg, "Open Settings")
+    .then((selection) => {
+      if (selection === "Open Settings") {
+        vscode.commands.executeCommand(
+          "workbench.action.openSettings",
+          "devman"
+        );
+      }
+    });
+}
+
+async function postRequest(url, data, headers) {
+  return await axios.post(url, data, {
+    headers: headers,
+  });
+}
+function get_language_id() {
+  const editor = vscode.window.activeTextEditor;
+  if (editor) {
+    return editor.document.languageId;
+  }
+  return;
+}
+
+function set_cursor_at_last_line() {
+  const text = getSelectedText();
+  if (text) {
+    const editor = vscode.window.activeTextEditor;
+    const position = editor.selection.active;
+    const lines = text ? text.split("\n") : [""];
+    const new_line = Math.max(position.line, lines.length) + 2;
+    var newPosition = position.with(new_line, 0);
+    editor.selection = new vscode.Selection(newPosition, newPosition);
+
+  }
+}
 module.exports = {
+  set_cursor_at_last_line,
+  postRequest,
   pick_item,
   get_feed,
   read_settings,
   replaceText,
   getSelectedText,
+  is_codex_apikey,
+  show_settings_popup,
+  get_language_id,
 };

@@ -99,6 +99,121 @@
 						"davinci-codex",
 						"cushman-codex"
 					]
+				},
+				"devman.carbon.paddingVertical": {
+					"default": "56px",
+					"type": "string",
+					"description": "Vertical Padding with pixels"
+				},
+				"devman.carbon.paddingHorizontal": {
+					"default": "56px",
+					"type": "string",
+					"description": "Horizontal Padding with pixels"
+				},
+				"devman.carbon.backgroundMode": {
+					"default": "color",
+					"type": "string",
+					"description": "Background Mode"
+				},
+				"devman.carbon.backgroundColor": {
+					"default": "rgba(171, 184, 195, 1)",
+					"type": "string",
+					"description": "Background Color in rgba"
+				},
+				"devman.carbon.dropShadow": {
+					"default": true,
+					"type": "boolean",
+					"description": "Drop Shadow"
+				},
+				"devman.carbon.dropShadowOffsetY": {
+					"default": "20px",
+					"type": "string",
+					"description": "Drop Shadow Offset Y in pixels"
+				},
+				"devman.carbon.dropShadowBlurRadius": {
+					"default": "68px",
+					"type": "string",
+					"description": "Drop Shadow Blur Radius in pixels"
+				},
+				"devman.carbon.theme": {
+					"default": "seti",
+					"type": "string",
+					"description": "Carbon Theme"
+				},
+				"devman.carbon.windowTheme": {
+					"default": "none",
+					"type": "string",
+					"description": "Carbon Window Theme"
+				},
+				"devman.carbon.language": {
+					"default": "auto",
+					"type": "string",
+					"description": "Language"
+				},
+				"devman.carbon.fontFamily": {
+					"default": "Hack",
+					"type": "string",
+					"description": "Font Family"
+				},
+				"devman.carbon.fontSize": {
+					"default": "14px",
+					"type": "string",
+					"description": "Font Size in pixels"
+				},
+				"devman.carbon.lineHeight": {
+					"default": "133%",
+					"type": "string",
+					"description": "Line Height with percentage"
+				},
+				"devman.carbon.windowControls": {
+					"default": true,
+					"type": "boolean",
+					"description": "Window Controls"
+				},
+				"devman.carbon.widthAdjustment": {
+					"default": true,
+					"type": "boolean",
+					"description": "Width Adjustment"
+				},
+				"devman.carbon.lineNumbers": {
+					"default": false,
+					"type": "boolean",
+					"description": "Include Line Numbers"
+				},
+				"devman.carbon.firstLineNumber": {
+					"default": 1,
+					"type": "number",
+					"description": "First Line Number"
+				},
+				"devman.carbon.exportSize": {
+					"default": "2x",
+					"type": "string",
+					"description": "Export Size"
+				},
+				"devman.carbon.watermark": {
+					"default": false,
+					"type": "boolean",
+					"description": "Water Mark"
+				},
+				"devman.carbon.squaredImage": {
+					"default": false,
+					"type": "boolean",
+					"description": "Squared Image"
+				},
+				"devman.carbon.hiddenCharacters": {
+					"default": false,
+					"type": "boolean",
+					"description": "Hidden Characters"
+				},
+				"devman.carbon.name": {
+					"default": "",
+					"type": "string",
+					"description": "Name of frame"
+				},
+				"devman.carbon.width": {
+					"default": 680,
+					"type": "number",
+					"description": ""
 				}
 			}
 		}

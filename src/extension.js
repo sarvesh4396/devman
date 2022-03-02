@@ -6,8 +6,6 @@ const { see_feeds } = require("./apis/feed");
 const { directmail } = require("./apis/mail");
 const { get_article_summary } = require("./apis/symbl");
 
-
-
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -41,7 +39,7 @@ async function activate(context) {
   );
   context.subscriptions.push(
     vscode.commands.registerCommand("devman.generate_docs", async function () {
-      generate_docs();
+      await generate_docs();
     })
   );
   context.subscriptions.push(

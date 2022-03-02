@@ -4,10 +4,18 @@ const axios = require("axios").default;
 const vscode = require("vscode");
 const { XMLParser } = require("fast-xml-parser");
 
-async function pick_item(items) {
-  const pick = await vscode.window.showQuickPick(items, {
-    matchOnDetail: true,
-  });
+async function pick_item(items, choose = false) {
+  let pick;
+  if (choose) {
+    pick = await vscode.window.showQuickPick(items, {
+      matchOnDetail: true,
+      canPickMany: choose,
+    });
+  } else {
+    pick = await vscode.window.showQuickPick(items, {
+      matchOnDetail: true,
+    });
+  }
   if (pick) {
     return pick;
   } else {
@@ -93,7 +101,6 @@ function set_cursor_at_last_line() {
     const new_line = Math.max(position.line, lines.length) + 2;
     var newPosition = position.with(new_line, 0);
     editor.selection = new vscode.Selection(newPosition, newPosition);
-
   }
 }
 module.exports = {

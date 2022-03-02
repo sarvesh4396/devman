@@ -23,7 +23,18 @@ async function pick_item(items, choose = false) {
     return;
   }
 }
-
+function count_blank_lines(lines) {
+  let count = 0;
+  if (lines.length <= 1) {
+    return count;
+  }
+  for (let line of lines) {
+    if (line.trim() === "") {
+      count++;
+    }
+  }
+  return count;
+}
 function getSelectedText() {
   const editor = vscode.window.activeTextEditor;
   if (editor) {
@@ -114,4 +125,5 @@ module.exports = {
   is_codex_apikey,
   show_settings_popup,
   get_language_id,
+  count_blank_lines,
 };

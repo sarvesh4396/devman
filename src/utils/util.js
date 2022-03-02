@@ -91,6 +91,7 @@ function show_settings_popup(msg) {
 }
 
 async function postRequest(url, data, headers) {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   return await axios.post(url, data, {
     headers: headers,
   });

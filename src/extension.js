@@ -3,7 +3,10 @@ const { beautify_share } = require("./apis/carbon");
 const { code_to_algo, algo_to_code, generate_docs } = require("./apis/codex");
 const { get_synonyms, get_antonyms } = require("./apis/datamuse");
 const { see_feeds } = require("./apis/feed");
+const { directmail } = require("./apis/mail");
 const { get_article_summary } = require("./apis/symbl");
+
+
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -19,6 +22,11 @@ async function activate(context) {
   context.subscriptions.push(
     vscode.commands.registerCommand("devman.synonym", async function () {
       get_synonyms();
+    })
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("devman.sendmail", async function () {
+      directmail();
     })
   );
   context.subscriptions.push(

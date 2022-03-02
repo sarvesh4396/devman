@@ -19,7 +19,8 @@
 		"onCommand:devman.generate_docs",
 		"onCommand:devman.algo_to_code",
 		"onCommand:devman.code_to_algo",
-		"onCommand:devman.article_summary"
+		"onCommand:devman.article_summary",
+		"onCommand:devman.sendmail"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -63,9 +64,15 @@
 				"command": "devman.article_summary",
 				"category": "DevMan",
 				"title": "Get summary for article"
+			},
+			{
+				"command": "devman.sendmail",
+				"category": "DevMan",
+				"title": "Send Snippet Via Mail"
 			}
 		],
 		"configuration": {
+			"title": "DevMan",
 			"properties": {
 				"devman.feed": {
 					"type": "array",
@@ -214,6 +221,31 @@
 					"default": 680,
 					"type": "number",
 					"description": ""
+				},
+				"devman.email.mail": {
+					"default": null,
+					"type": "string",
+					"description": "Your Email Address"
+				},
+				"devman.email.pass": {
+					"default": null,
+					"type": "string",
+					"description": "Your Email Password"
+				},
+				"devman.email.to-mails": {
+					"default": [],
+					"type": "array",
+					"description": "Emails you want to send to"
+				},
+				"devman.email.lists": {
+					"default": [
+						{
+							"name": "team1",
+							"emails": []
+						}
+					],
+					"type": "array",
+					"description": "Lists of email with list name"
 				}
 			}
 		}
@@ -236,6 +268,7 @@
 	},
 	"dependencies": {
 		"axios": "^0.26.0",
-		"fast-xml-parser": "^4.0.3"
+		"fast-xml-parser": "^4.0.3",
+		"nodemailer": "^6.7.2"
 	}
 }

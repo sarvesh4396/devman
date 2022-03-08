@@ -13,14 +13,20 @@ const generating_str = {
     Docstring for the above code:`,
 };
 const algo_to_code_str = {
-  javascript: `Write the above algorithm in javascript:`,
-  typescript: `Write the above algorithm in typescript:`,
-  python: `Write the above algorithm in python:`,
+  javascript: `/**
+  Write the above algorithm in javascript:`,
+  typescript: `/**
+  Write the above algorithm in typescript:`,
+  python: `"""
+  Explanation of what the above python code does`,
 };
 const code_to_algo_str = {
-  javascript: `Explain the algorithm of above code`,
-  typescript: `Explain the algorithm of above code`,
-  python: `Explain the algorithm of above code`,
+  javascript: `/**
+  Explain the algorithm of above code`,
+  typescript: `/**
+  Explain the algorithm of above code`,
+  python: `"""
+  Explain above code of language python`,
 };
 const languages = {
   javascript: js_examples,

@@ -40,3 +40,7 @@
 - [ ] Article summary
 
 - [ ] Video summary (if possible)
+
+- [ ] Slack Integration
+
+- [ ] YottaAnswers

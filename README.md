@@ -21,26 +21,33 @@
 
 - Next-Level Productivity with AI
 
-## TODO
+> What you need?
+Open AI Codex api key
 
-- [ ] Auto Debugging
+## Supported Languages
+
+- Python
+
+- Javascript
+
+## Implemented Features
 
 - [x] Auto code generation/completion
-
-- [ ] Code Generation with Voice
 
 - [x] Email Someone snippet or team snippet
 
 - [x] Beautify Snippet
 
-- [ ] Updating Docs
-
 - [x] RSS Feed
+
+## TODO
+
+- [ ] Code Generation with Voice (Dropping)
+
+- [ ] Updating Docs
 
 - [ ] Article summary
 
 - [ ] Video summary (if possible)
 
 - [ ] Slack Integration
-
-- [ ] YottaAnswers

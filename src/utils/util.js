@@ -115,9 +115,59 @@ function set_cursor_at_last_line() {
     editor.selection = new vscode.Selection(newPosition, newPosition);
   }
 }
+function set_python_position() {
+  const text = getSelectedText();
+  if (text) {
+    const editor = vscode.window.activeTextEditor;
+    const position = editor.selection.active;
+    const lines = text ? text.split("\n") : [""];
+    const delim = ":";
+    var line_number = 0;
+    var character = 0;
+    for (var line of lines) {
+      for (let i = 0; i < line.length; i++) {
+        if (line[i] === delim) {
+          line_number = lines.indexOf(line);
+          character = i + 1;
+        }
+      }
+      if (character !== 0) {
+        break;
+      }
+    }
+    var newPosition = position.with(
+      line_number + editor.selection.start.line,
+      character
+    );
+    editor.selection = new vscode.Selection(newPosition, newPosition);
+  }
+}
+
+function get_tab_config() {
+  const editor = vscode.window.activeTextEditor;
+  if (editor)
+    return {
+      tabSize: editor.options.tabSize,
+      insertSpaces: editor.options.insertSpaces,
+    };
+  return;
+}
+function getInsertPosition(editor) {
+  var firstLine = editor.document.lineAt(editor.selection.start.line);
+  const insertPosition = new vscode.Position(
+    editor.selection.start.line,
+    firstLine.firstNonWhitespaceCharacterIndex
+  );
+  return insertPosition;
+}
+
+function count_empty(text) {
+  return (text.match(/(^[ \t]*(\n|$))/gm) || []).length;
+}
 module.exports = {
   set_cursor_at_last_line,
   postRequest,
+  set_python_position,
   pick_item,
   get_feed,
   read_settings,
@@ -127,4 +177,7 @@ module.exports = {
   show_settings_popup,
   get_language_id,
   count_blank_lines,
+  getInsertPosition,
+  count_empty,
+  get_tab_config,
 };

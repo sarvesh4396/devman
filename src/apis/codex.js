@@ -6,11 +6,14 @@ const {
   is_codex_apikey,
   show_settings_popup,
   read_settings,
+  get_tab_config,
   postRequest,
   getSelectedText,
   get_language_id,
   replaceText,
   set_cursor_at_last_line,
+  getInsertPosition,
+  set_python_position,
 } = require("../utils/util");
 const languages_data = require("../utils/lang");
 
@@ -62,13 +65,7 @@ async function algo_to_code() {
         //   start_token +
         //   `write above algorithm in ${lang_id} language` +
         //   stop_token;
-        let prompt_text =
-          get_examples(get_language_id()) +
-          "\n" +
-          text +
-          "\n" +
-          algo_to_code_str +
-          stop_token;
+        let prompt_text = text + "\n" + algo_to_code_str + stop_token;
         const body = {
           prompt: prompt_text,
           temperature: 0,
@@ -110,7 +107,7 @@ async function code_to_algo() {
           text + "\n" + languages_data.code_to_algo_str[lang_id] + stop_token;
         const body = {
           prompt: prompt_text,
-          temperature: read_settings().openAI.temperature || 0.9,
+          temperature: read_settings().openAI.temperature || 0.8,
           max_tokens: text.length * 4,
           top_p: 1,
           n: 1,
@@ -169,10 +166,58 @@ async function generate_docs() {
           stop: stop_token,
         };
         try {
-          const response = await postRequest(codex.completion, body, HEADERS);
-          const docs = start_token + response.data.choices[0].text + stop_token;
-          set_cursor_at_last_line();
-          replaceText(docs);
+          vscode.window.withProgress(
+            {
+              location: vscode.ProgressLocation.Notification,
+              title: "Generating docstring",
+              cancellable: true,
+            },
+            () => {
+              return new Promise(async (resolve) => {
+                const editor = vscode.window.activeTextEditor;
+                {
+                  const insertPosition = getInsertPosition(
+                    vscode.window.activeTextEditor
+                  );
+                  const response = await postRequest(
+                    codex.completion,
+                    body,
+                    HEADERS
+                  );
+                  const docs =
+                    start_token +
+                    response.data.choices[0].text +
+                    "\n" +
+                    stop_token;
+
+                  const tab_config = get_tab_config();
+                  const indentation = " ".repeat(Number(tab_config.tabSize));
+
+                  try {
+                    if (lang_id == "python") {
+                      set_python_position();
+                      const fin_docs =
+                        "\n" +
+                        indentation +
+                        docs.replace(/\n/g, "\n" + indentation);
+                      replaceText(fin_docs);
+                    } else {
+                      const snippet = new vscode.SnippetString(`${docs}\n`);
+
+                      editor.insertSnippet(snippet, insertPosition);
+                    }
+                    resolve("Complete docstring generation");
+                  } catch (e) {
+                    vscode.window.showErrorMessage(e);
+                    resolve(e);
+                  }
+                }
+              });
+            }
+          );
+
+          // set_cursor_at_last_line();
+          // replaceText(docs);
         } catch (error) {
           console.log(error);
           vscode.window.showErrorMessage(error);

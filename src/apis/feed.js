@@ -10,6 +10,7 @@ async function pick_article() {
   );
   if (picked_feed) {
     //   console.log(picked_feed);
+    // @ts-ignore
     const rss_feeds = await get_feed(picked_feed.link);
     //   console.log(rss_feeds);
     const article = await pick_item(rss_feeds);
@@ -25,5 +26,4 @@ async function see_feeds() {
     vscode.env.openExternal(article.link);
   }
 }
-
 module.exports = { see_feeds, pick_article };

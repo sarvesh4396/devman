@@ -19,7 +19,6 @@
 		"onCommand:devman.generate_docs",
 		"onCommand:devman.algo_to_code",
 		"onCommand:devman.code_to_algo",
-		"onCommand:devman.article_summary",
 		"onCommand:devman.sendmail"
 	],
 	"main": "./src/extension.js",
@@ -59,11 +58,6 @@
 				"command": "devman.code_to_algo",
 				"category": "DevMan",
 				"title": "Generate Algorithm from Code"
-			},
-			{
-				"command": "devman.article_summary",
-				"category": "DevMan",
-				"title": "Get summary for article"
 			},
 			{
 				"command": "devman.sendmail",

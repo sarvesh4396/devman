@@ -62,6 +62,7 @@ async function get_feed(url) {
   };
 
   const parser = new XMLParser(options);
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   return axios.get(url).then(function (response) {
     return parser.parse(response.data).rss.channel.item.map((article) => ({
       label: article.title,

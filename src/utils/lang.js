@@ -22,11 +22,11 @@ const algo_to_code_str = {
 };
 const code_to_algo_str = {
   javascript: `/**
-  Explain the algorithm of above code`,
+  Here\'s what the above code is doing:\n1.`,
   typescript: `/**
-  Explain the algorithm of above code`,
+  Here\'s what the above code is doing:\n1.`,
   python: `"""
-  Explain the algorithm of above code`,
+  Here\'s what the above code is doing:\n1.`,
 };
 const languages = {
   javascript: js_examples,

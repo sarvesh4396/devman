@@ -95,12 +95,11 @@ async function code_to_algo() {
         const start_token = languages_data.stop_tokens[lang_id];
         const stop_token = languages_data.start_tokens[lang_id];
         let prompt_text =
-          text + "\n" + languages_data.code_to_algo_str[lang_id] + stop_token;
+          text + "\n" + languages_data.code_to_algo_str[lang_id];
         const body = {
           prompt: prompt_text,
-          temperature: read_settings().openAI.temperature || 0.8,
-          max_tokens: text.length * 4,
-          top_p: 1,
+          temperature: 0,
+          max_tokens: text.length * 5,
           n: 1,
           echo: false,
           frequency_penalty: 0,

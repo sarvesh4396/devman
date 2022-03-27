@@ -58,24 +58,15 @@ async function algo_to_code() {
       const lang_id = get_language_id();
       console.log(lang_id, "\n", text);
       if (lang_id) {
-        const stop_token = languages_data.start_tokens[lang_id];
-        const algo_to_code_str = languages_data.algo_to_code_str[lang_id];
-        // const prompt_text =
-        //   text +
-        //   start_token +
-        //   `write above algorithm in ${lang_id} language` +
-        //   stop_token;
-        let prompt_text = text + "\n" + algo_to_code_str + stop_token;
+        let prompt_text = text;
         const body = {
           prompt: prompt_text,
           temperature: 0,
-          max_tokens: text.length * 3,
+          max_tokens: text.length * 5,
           top_p: 1,
-          n: 1,
           echo: false,
           frequency_penalty: 0,
           presence_penalty: 0,
-          stop: stop_token,
         };
         try {
           const response = await postRequest(codex.completion, body, HEADERS);

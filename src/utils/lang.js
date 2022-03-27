@@ -18,7 +18,7 @@ const algo_to_code_str = {
   typescript: `/**
   Write the above algorithm in typescript:`,
   python: `"""
-  Explanation of what the above python code does`,
+  Write the above algorithm in python:`,
 };
 const code_to_algo_str = {
   javascript: `/**
@@ -26,7 +26,7 @@ const code_to_algo_str = {
   typescript: `/**
   Explain the algorithm of above code`,
   python: `"""
-  Explain above code of language python`,
+  Explain the algorithm of above code`,
 };
 const languages = {
   javascript: js_examples,

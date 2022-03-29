@@ -40,11 +40,11 @@ Open AI Codex api key
 
 - [x] RSS Feed
 
+- [x] Updating Docs
+
 ## TODO
 
 - [ ] Code Generation with Voice (Dropping)
-
-- [ ] Updating Docs
 
 - [ ] Article summary
 

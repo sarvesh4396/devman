@@ -44,10 +44,20 @@ Open AI Codex api key
 
 ## TODO
 
-- [ ] Code Generation with Voice (Dropping)
+- [ ] Publishing it on marketplace
 
-- [ ] Article summary
+- [ ] More examples to add to work openai api work perfectly
 
-- [ ] Video summary (if possible)
+- [ ] Enhance Dictionary
 
 - [ ] Slack Integration
+
+- [ ] Voice support
+
+- [ ] Article Summary directly from url
+
+- [ ] AI based question answering (wolframalpha.com)
+
+- [ ] Code Generation with Voice (if possible)
+
+- [ ] Video summary (if possible)
